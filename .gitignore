@@ -1,0 +1,9 @@
+run*
+__pycache__
+*checkpoints
+*.txt
+*.log
+*.csv
+*.xlsx
+.vscode
+data
