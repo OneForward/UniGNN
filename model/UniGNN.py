@@ -299,14 +299,14 @@ class UniGNN(nn.Module):
         """UniGNN
 
         Args:
-            args (NamedTuple): [description]
-            nfeat (int): [description]
-            nhid (int): [description]
-            nclass (int): [description]
-            nlayer (int): [description]
-            nhead (int): [description]
-            V (torch.long): [description]
-            E (torch.long): [description]
+            args   (NamedTuple): global args
+            nfeat  (int): dimension of features
+            nhid   (int): dimension of hidden features, note that actually it\'s #nhid x #nhead
+            nclass (int): number of classes
+            nlayer (int): number of hidden layers
+            nhead  (int): number of conv heads
+            V (torch.long): V is the row index for the sparse incident matrix H, |V| x |E|
+            E (torch.long): E is the col index for the sparse incident matrix H, |V| x |E|
         """
         super().__init__()
         Conv = __all_convs__[args.model_name]
@@ -373,17 +373,17 @@ class UniGCNIIConv(nn.Module):
 
 class UniGCNII(nn.Module):
     def __init__(self, args, nfeat, nhid, nclass, nlayer, nhead, V, E):
-        """UniGCNII
+        """UniGNNII
 
         Args:
-            args (NamedTuple): [description]
-            nfeat (int): [description]
-            nhid (int): [description]
-            nclass (int): [description]
-            nlayer (int): [description]
-            nhead (int): [description]
-            V (torch.long): [description]
-            E (torch.long): [description]
+            args   (NamedTuple): global args
+            nfeat  (int): dimension of features
+            nhid   (int): dimension of hidden features, note that actually it\'s #nhid x #nhead
+            nclass (int): number of classes
+            nlayer (int): number of hidden layers
+            nhead  (int): number of conv heads
+            V (torch.long): V is the row index for the sparse incident matrix H, |V| x |E|
+            E (torch.long): E is the col index for the sparse incident matrix H, |V| x |E|
         """
         super().__init__()
         self.V = V 
